@@ -7,7 +7,7 @@ client.connect();
 
 exports.list = async (req, res) => {
     try {
-      const cursor = client.db("COM519").collection("bmw_pricing_challenge").find({ model_key: "420" })
+      const cursor = client.db("COM519").collection("bmw_pricing_challenge").find({ maker_key: "BMW" })
       //console.log(pricings);
       //const pricings = Pricing.find({maker_key:"BMW"})
       //const cursor = collection.find({});
