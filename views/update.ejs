@@ -8,7 +8,7 @@
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
       <meta name="description" content="" />
-      <title>Create</title>
+      <title>Update</title>
 
       <link
         rel="canonical"
@@ -30,58 +30,58 @@
       <%- include('common/header'); -%>
 
       <div class="container">
-        <h1 class="text-center">Create A New BMW Record </h1>
+        <h2 class="text-center">Update an existing BMW Record </h2>
         <div class="row justify-content-md-center">
           <div class="col-">
-
-            <form method="POST" action="/s">
-
+           
+            <form method="POST" action="/update/:id">
+               
               <div class="form-group">
                 <label for="maker">Maker </label>
-                <input type="text" class="form-control" id="maker" name="maker" placeholder="Enter Title"/>
+                <input type="text" class="form-control" id="maker" name="maker" value="<%= result.maker_key %>" />
               </div>
               <div class="form-group">
                 <label for="model">Model</label>
-                <input type="text" class="form-control" id="model" name="model" />
+                <input type="text" class="form-control" id="model" name="model" value="<%= result.model_key %>" />
               </div>
               <div class="form-group">
                 <label for="mileage">Mileage</label>
-                <input type="text" class="form-control" id="mileage" name="mileage" />
+                <input type="text" class="form-control" id="mileage" name="mileage" value="<%= result.mileage %>" />
               </div>
               <div class="form-group">
                 <label for="engine">Engine Power</label>
-                <input type="text" class="form-control" id="engine" name="engine" />
+                <input type="text" class="form-control" id="engine" name="engine" value="<%= result.engine_power %>" />
               </div>
               <div class="form-group">
                 <label for="registration">Registration Date</label>
-                <input type="text" class="form-control" id="registration" name="registration" />
+                <input type="text" class="form-control" id="registration" name="registration" value="<%= result.registration_date %>" />
               </div>
               <div class="form-group">
                 <label for="fuel">Fuel</label>
-                <input type="text" class="form-control" id="fuel" name="fuel" />
+                <input type="text" class="form-control" id="fuel" name="fuel" value="<%= result.fuel %>" />
               </div>
               <div class="form-group">
                 <label for="paint">Paint Color</label>
-                <input type="text" class="form-control" id="paint" name="paint" />
+                <input type="text" class="form-control" id="paint" name="paint" value="<%= result.paint_color %>" />
               </div>
               <div class="form-group">
                 <label for="type">Type of the Car</label>
-                <input type="text" class="form-control" id="type" name="type"/>
+                <input type="text" class="form-control" id="type" name="type" value="<%= result.car_type %>" />
               </div>
               <div class="form-group">
                 <label for="price">Price</label>
-                <input type="text" class="form-control" id="price" name="price" />
+                <input type="text" class="form-control" id="price" name="price" value="<%= result.price %>" />
               </div>
               <div class="form-group">
                 <label for="sold_at">Sold Date</label>
-                <input type="text" class="form-control" id="sold_at" name="sold_at" />
+                <input type="text" class="form-control" id="sold_at" name="sold_at" value="<%= result.sold_at %>" />
               </div>
 
 
-              <button type="submit" class="btn btn-primary">Submit</button>
-
+              <button type="submit" class="btn btn-primary">Update</button>
+              
             </form>
-
+           
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@ exports.list = async (req, res) => {
         const count = await BMW.find({}).count();
         const numberOfPages = Math.ceil(count / perPage);
 
-        res.render("d", {
+        res.render("listing", {
             BMWS: BMWS,
             numberOfPages: numberOfPages,
             currentPage: page,
@@ -45,11 +45,11 @@ exports.create = async (req, res) => {
         });
 
         
-        res.redirect('/d/?message=BMW record has been created');
+        res.redirect('/listing/?message=BMW record has been created');
         console.log("created and saved record!!!");
     } catch (e) {
         if (e.errors) {
-            res.render('s', { errors: e.errors })
+            res.render('create', { errors: e.errors })
             console.log(e.errors);
             return;
         }
@@ -68,14 +68,14 @@ exports.edit = async (req, res) => {
       const result = await BMW.findById(_id);
       
       if (!result) throw Error('cant find record');
-      res.render('u', {
+      res.render('update', {
         result: result,
       });
       console.log(`finded record with id: ${_id}`);
     } catch (e) {
       console.log(e)
       if (e.errors) {
-        res.render('d', { errors: e.errors })
+        res.render('listing', { errors: e.errors })
         return;
       }
       res.status(404).send({
@@ -100,7 +100,7 @@ exports.editView = async(req,res)=>{
             sold_at: req.body.sold_at 
         });
         console.log("record successfully updated!")
-        res.redirect("/d");
+        res.redirect("/listing");
     }catch (e) {
         res.status(404).send({
             message: `could not update  record.`,
@@ -113,7 +113,7 @@ exports.delete = async (req, res) => {
     
     try {
         await BMW.findByIdAndRemove(_id);
-        res.redirect("/d");
+        res.redirect("/listing");
         console.log("Record Deleted");
     } catch (e) {
         res.status(404).send({

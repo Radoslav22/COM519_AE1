@@ -37,18 +37,18 @@ app.get("/", (req, res) => {
 });
 
 
-app.get("/d",bmwController.list);
-app.get("/d/delete/:_id", bmwController.delete);
+app.get("/listing",bmwController.list);
+app.get("/listing/delete/:_id", bmwController.delete);
 
 
-app.get("/u/:id", bmwController.edit);
-app.post("/u/:id", bmwController.editView);
+app.get("/update/:id", bmwController.edit);
+app.post("/update/:id", bmwController.editView);
 
 
-app.get("/s", (req,res) =>{
-    res.render("s");
+app.get("/create", (req,res) =>{
+    res.render("create");
 });
-app.post("/s" ,bmwController.create);
+app.post("/create" ,bmwController.create);
 
 
 app.listen(PORT, () => {

@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="" />
-  <title>Read</title>
+  <title>BMW Read</title>
 
 
 
@@ -37,12 +37,7 @@
 
           
           <div class="row col-md-12 col-md-offset-2 custyle mx-auto">
-            <h1 class="mx-auto">BMW Price Challenge</h1>
-            
-            
-
-
-
+            <h2 class="mx-auto">BMW Price Challenge</h2>
             <table class="table table-striped custab">
               <thead>
                 <tr>
@@ -93,10 +88,10 @@
                       <%= bmw.sold_at %>
                     </td>
                     <td>
-                      <a href="/u/<%= bmw._id %>" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-remove"></span> Edit</a>
+                      <a href="/update/<%= bmw._id %>" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-remove"></span> Edit</a>
                     </td>
                     <td> 
-                      <a  href="/d/delete/<%= bmw._id %>" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                      <a  href="/listing/delete/<%= bmw._id %>" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Delete</a>
                     </td>   
 
 
@@ -122,47 +117,47 @@
                   <li class="page-item disabled"><a class="page-link" href="#">First</a></li>
                   <% } %>
                     <% if (currentPage> 1) { %>
-                      <li class="page-item"><a class="page-link" href="/d">First</a></li>
+                      <li class="page-item"><a class="page-link" href="/listing">First</a></li>
                       <% } %>
 
                         <li class="page-item"><a class="page-link"
-                            href="/d?page=<%= currentPage === numberOfPages ? currentPage - 10 :  currentPage + 1 %>">
+                            href="/listing?page=<%= currentPage === numberOfPages ? currentPage - 10 :  currentPage + 1 %>">
                             <%= currentPage===numberOfPages ? currentPage - 10 : currentPage + 1 %>
                           </a></li>
                         <li class="page-item"><a class="page-link"
-                            href="/d?page=<%= currentPage === numberOfPages ? currentPage - 9 :  currentPage + 2 %>">
+                            href="/listing?page=<%= currentPage === numberOfPages ? currentPage - 9 :  currentPage + 2 %>">
                             <%= currentPage===numberOfPages ? currentPage - 9 : currentPage + 2 %>
                           </a></li>
                         <li class="page-item"><a class="page-link"
-                            href="/d?page=<%= currentPage === numberOfPages ? currentPage - 8 :  currentPage + 3 %>">
+                            href="/listing?page=<%= currentPage === numberOfPages ? currentPage - 8 :  currentPage + 3 %>">
                             <%= currentPage===numberOfPages ? currentPage - 8 : currentPage + 3 %>
                           </a></li>
                         <li class="page-item"><a class="page-link"
-                            href="/d?page=<%= currentPage === numberOfPages ? currentPage - 7 :  currentPage + 4 %>">
+                            href="/listing?page=<%= currentPage === numberOfPages ? currentPage - 7 :  currentPage + 4 %>">
                             <%= currentPage===numberOfPages ? currentPage - 7 : currentPage + 4 %>
                           </a></li>
                         <li class="page-item"><a class="page-link"
-                            href="/d?page=<%= currentPage === numberOfPages ? currentPage - 6 :  currentPage + 5 %>">
+                            href="/listing?page=<%= currentPage === numberOfPages ? currentPage - 6 :  currentPage + 5 %>">
                             <%= currentPage===numberOfPages ? currentPage - 6 : currentPage + 5 %>
                           </a></li>
                         <li class="page-item"><a class="page-link"
-                            href="/d?page=<%= currentPage === numberOfPages ? currentPage - 5 :  currentPage + 6 %>">
+                            href="/listing?page=<%= currentPage === numberOfPages ? currentPage - 5 :  currentPage + 6 %>">
                             <%= currentPage===numberOfPages ? currentPage - 5 : currentPage + 6 %>
                           </a></li>
                         <li class="page-item"><a class="page-link"
-                            href="/d?page=<%= currentPage === numberOfPages ? currentPage - 4 :  currentPage + 7 %>">
+                            href="/listing?page=<%= currentPage === numberOfPages ? currentPage - 4 :  currentPage + 7 %>">
                             <%= currentPage===numberOfPages ? currentPage - 4 : currentPage + 7 %>
                           </a></li>
                         <li class="page-item"><a class="page-link"
-                            href="/d?page=<%= currentPage === numberOfPages ? currentPage - 3 :  currentPage + 8 %>">
+                            href="/listing?page=<%= currentPage === numberOfPages ? currentPage - 3 :  currentPage + 8 %>">
                             <%= currentPage===numberOfPages ? currentPage - 3 : currentPage + 8 %>
                           </a></li>
                         <li class="page-item"><a class="page-link"
-                            href="/d?page=<%= currentPage === numberOfPages ? currentPage - 2 :  currentPage + 9 %>">
+                            href="/listing?page=<%= currentPage === numberOfPages ? currentPage - 2 :  currentPage + 9 %>">
                             <%= currentPage===numberOfPages ? currentPage - 2 : currentPage + 9 %>
                           </a></li>
                         <li class="page-item"><a class="page-link"
-                            href="/d?page=<%= currentPage === numberOfPages ? currentPage - 1 :  currentPage + 10 %>">
+                            href="/listing?page=<%= currentPage === numberOfPages ? currentPage - 1 :  currentPage + 10 %>">
                             <%= currentPage===numberOfPages ? currentPage - 1 : currentPage + 10 %>
                           </a></li>
 
@@ -173,7 +168,7 @@
 
                             <% if (currentPage < numberOfPages) { %>
                               <li class="page-item"><a class="page-link"
-                                  href="/d?page=<%= numberOfPages %>">Last</a>
+                                  href="/listing?page=<%= numberOfPages %>">Last</a>
                               </li>
                               <% } %>
 
