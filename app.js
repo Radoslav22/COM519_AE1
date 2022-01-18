@@ -3,21 +3,22 @@ const express = require("express");
 const expressSession = require("express-session");
 const app = express();
 const bodyParser = require("body-parser");
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 const { PORT, MONGODB_URI } = process.env;
 const BMW = require("./models/bmw");
 
 
-const bmwController = require("./controllers/search");
+const bmwController = require("./controllers/crud");
+const searchapiController = require("./controllers/api/search")
 const res = require("express/lib/response");
 
 app.use( express.static( "public" ) );
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
-app.use(expressSession({ secret: 'foo barr', cookie: { expires: new Date(253402300000000) } }))
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(expressSession({ secret: 'foo barr', cookie: { expires: new Date(253402300000000) } }));
 
 
-app.set("view engine", "ejs")
+app.set("view engine", "ejs");
 
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
@@ -49,6 +50,13 @@ app.get("/create", (req,res) =>{
     res.render("create");
 });
 app.post("/create" ,bmwController.create);
+
+
+app.get("/search", (req,res)=>{
+    res.render("search");
+    req.query.search;
+    console.log(req.query);
+});
 
 
 app.listen(PORT, () => {

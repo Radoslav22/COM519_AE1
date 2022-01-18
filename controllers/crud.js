@@ -22,7 +22,7 @@ exports.list = async (req, res) => {
             message: message
         });
     } catch (e) {
-        res.status(404).send({ message: "could not list tastings" });
+        res.status(404).send({ message: "could not list records" });
     }
 };
 
