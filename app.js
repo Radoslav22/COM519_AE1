@@ -11,7 +11,7 @@ const BMW = require("./models/bmw");
 const bmwController = require("./controllers/search");
 const res = require("express/lib/response");
 
-
+app.use( express.static( "public" ) );
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(expressSession({ secret: 'foo barr', cookie: { expires: new Date(253402300000000) } }))
