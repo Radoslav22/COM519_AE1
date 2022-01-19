@@ -7,11 +7,11 @@ exports.post = async (req,res) => {
     const limit = parseInt(req.query.limit) || 10; 
     const page = parseInt(req.query.page) || 1;
     const message = req.query.message;
-
+    const regex = new RegExp(escapeRegex(req.body.search), 'gi');
 
     try {
-        const BMWS = await BMW.find({model_key: req.body.search}).skip((perPage * page) - perPage).limit(limit);
-        const count = await BMW.find({model_key: req.body.search}).count();
+        const BMWS = await BMW.find({model_key: regex}).skip((perPage * page) - perPage).limit(limit);
+        const count = await BMW.find({model_key: regex}).count();
         const numberOfPages = Math.ceil(count / perPage);
 
         //console.log({BMWS:BMWS});
@@ -54,4 +54,6 @@ exports.get = async (req, res) => {
         console.log({ message: "could not list records" });
     }
 };
-
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
