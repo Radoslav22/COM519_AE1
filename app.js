@@ -9,7 +9,10 @@ const BMW = require("./models/bmw");
 
 
 const bmwController = require("./controllers/crud");
-const searchapiController = require("./controllers/api/search")
+const searchapiController = require("./controllers/api/search");
+const filterController = require("./controllers/api/filter");
+
+
 const res = require("express/lib/response");
 
 app.use( express.static( "public" ) );
@@ -41,6 +44,9 @@ app.get("/", (req, res) => {
 app.get("/listing",bmwController.list);
 app.get("/listing/delete/:_id", bmwController.delete);
 
+app.get("/listing-ascending", filterController.ascending);
+app.get("/listing-descending", filterController.descending);
+
 
 app.get("/update/:id", bmwController.edit);
 app.post("/update/:id", bmwController.editView);
@@ -50,6 +56,7 @@ app.get("/create", (req,res) =>{
     res.render("create");
 });
 app.post("/create" ,bmwController.create);
+
 
 
 app.get("/search", searchapiController.get);
