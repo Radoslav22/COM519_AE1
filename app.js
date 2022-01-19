@@ -52,12 +52,8 @@ app.get("/create", (req,res) =>{
 app.post("/create" ,bmwController.create);
 
 
-app.get("/search", (req,res)=>{
-    res.render("search");
-    req.query.search;
-    console.log(req.query);
-});
-
+app.get("/search", searchapiController.get);
+app.post("/search", searchapiController.post);
 
 app.listen(PORT, () => {
     console.log(

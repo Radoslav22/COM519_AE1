@@ -25,14 +25,179 @@
         <div class="container">
 
             <h2 class="text-center"> Search Record </h2>
-            <form method="GET" action="/search">
+            <form method="POST" action="/search">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search by model" id="searchInput" />
-                    <div class="input-group-append">
-                        <input type="submit" value="Search" class="btn btn-light" />
-                    </div>
+                    <input type="text" class="form-control" name="search" placeholder="Search by model"
+                        id="searchInput" />
+
+                    <input type="submit" value="Search" class="btn btn-light" />
                 </div>
             </form>
+            <% if (message) { %>
+                <div class="row justify-content-md-center">
+                    <div class="alert alert-primary" role="alert">
+                        <%= message %>
+                    </div>
+                </div>
+
+                <% } %>
+
+                    <div class="row col-md-12 col-md-offset-2 custyle mx-auto">
+                        <h2 class="mx-auto">BMW Price Challenge</h2>
+                        <table class="table table-striped custab">
+                            <thead>
+                                <tr>
+                                    <th>Maker</th>
+                                    <th>Model</th>
+                                    <th>Mileage</th>
+                                    <th>Engine power</th>
+                                    <th>Registration Date</th>
+                                    <th>Type of fuel</th>
+                                    <th>Paint color</th>
+                                    <th>Car type</th>
+                                    <th>Price</th>
+                                    <th>Sold At</th>
+                                </tr>
+
+                                <% BMWS.forEach(bmw=> { %>
+
+                                    <tr>
+
+                                        <td>
+                                            <%= bmw.maker_key %>
+                                        </td>
+                                        <td>
+                                            <%= bmw.model_key %>
+                                        </td>
+                                        <td>
+                                            <%= bmw.mileage %>
+                                        </td>
+                                        <td>
+                                            <%= bmw.engine_power %>
+                                        </td>
+                                        <td>
+                                            <%= bmw.registration_date %>
+                                        </td>
+                                        <td>
+                                            <%= bmw.fuel %>
+                                        </td>
+                                        <td>
+                                            <%= bmw.paint_color %>
+                                        </td>
+                                        <td>
+                                            <%= bmw.car_type %>
+                                        </td>
+                                        <td>
+                                            £<%= bmw.price %>
+                                        </td>
+                                        <td>
+                                            <%= bmw.sold_at %>
+                                        </td>
+                                        <td>
+                                            <a href="/update/<%= bmw._id %>" class="btn btn-info btn-xs"><span
+                                                    class="glyphicon glyphicon-remove"></span> Edit</a>
+                                        </td>
+                                        <td>
+                                            <a href="/listing/delete/<%= bmw._id %>" class="btn btn-danger btn-xs"><span
+                                                    class="glyphicon glyphicon-remove"></span> Delete</a>
+                                        </td>
+
+
+                                        <% }); %>
+
+
+                            </thead>
+
+                        </table>
+                    </div>
+                    <div class="row col-md-12 col-md-offset-2 custyle mx-auto">
+
+
+
+                        <nav aria-label="Page navigation example">
+
+
+
+                            <ul class="pagination">
+
+                                <% if (currentPage===1) { %>
+
+                                    <li class="page-item disabled"><a class="page-link" href="#">First</a></li>
+                                    <% } %>
+                                        <% if (currentPage> 1) { %>
+                                            <li class="page-item"><a class="page-link" href="/search">First</a></li>
+                                            <% } %>
+
+                                                <li class="page-item"><a class="page-link"
+                                                        href="/search?page=<%= currentPage === numberOfPages ? currentPage - 10 :  currentPage + 1 %>">
+                                                        <%= currentPage===numberOfPages ? currentPage - 10 : currentPage
+                                                            + 1 %>
+                                                    </a></li>
+                                                <li class="page-item"><a class="page-link"
+                                                        href="/search?page=<%= currentPage === numberOfPages ? currentPage - 9 :  currentPage + 2 %>">
+                                                        <%= currentPage===numberOfPages ? currentPage - 9 : currentPage
+                                                            + 2 %>
+                                                    </a></li>
+                                                <li class="page-item"><a class="page-link"
+                                                        href="/search?page=<%= currentPage === numberOfPages ? currentPage - 8 :  currentPage + 3 %>">
+                                                        <%= currentPage===numberOfPages ? currentPage - 8 : currentPage
+                                                            + 3 %>
+                                                    </a></li>
+                                                <li class="page-item"><a class="page-link"
+                                                        href="/search?page=<%= currentPage === numberOfPages ? currentPage - 7 :  currentPage + 4 %>">
+                                                        <%= currentPage===numberOfPages ? currentPage - 7 : currentPage
+                                                            + 4 %>
+                                                    </a></li>
+                                                <li class="page-item"><a class="page-link"
+                                                        href="/search?page=<%= currentPage === numberOfPages ? currentPage - 6 :  currentPage + 5 %>">
+                                                        <%= currentPage===numberOfPages ? currentPage - 6 : currentPage
+                                                            + 5 %>
+                                                    </a></li>
+                                                <li class="page-item"><a class="page-link"
+                                                        href="/search?page=<%= currentPage === numberOfPages ? currentPage - 5 :  currentPage + 6 %>">
+                                                        <%= currentPage===numberOfPages ? currentPage - 5 : currentPage
+                                                            + 6 %>
+                                                    </a></li>
+                                                <li class="page-item"><a class="page-link"
+                                                        href="/search?page=<%= currentPage === numberOfPages ? currentPage - 4 :  currentPage + 7 %>">
+                                                        <%= currentPage===numberOfPages ? currentPage - 4 : currentPage
+                                                            + 7 %>
+                                                    </a></li>
+                                                <li class="page-item"><a class="page-link"
+                                                        href="/search?page=<%= currentPage === numberOfPages ? currentPage - 3 :  currentPage + 8 %>">
+                                                        <%= currentPage===numberOfPages ? currentPage - 3 : currentPage
+                                                            + 8 %>
+                                                    </a></li>
+                                                <li class="page-item"><a class="page-link"
+                                                        href="/search?page=<%= currentPage === numberOfPages ? currentPage - 2 :  currentPage + 9 %>">
+                                                        <%= currentPage===numberOfPages ? currentPage - 2 : currentPage
+                                                            + 9 %>
+                                                    </a></li>
+                                                <li class="page-item"><a class="page-link"
+                                                        href="/search?page=<%= currentPage === numberOfPages ? currentPage - 1 :  currentPage + 10 %>">
+                                                        <%= currentPage===numberOfPages ? currentPage - 1 : currentPage
+                                                            + 10 %>
+                                                    </a></li>
+
+                                                <% if (currentPage===numberOfPages) { %>
+
+                                                    <li class="page-item disabled"><a class="page-link"
+                                                            href="/search">Last</a></li>
+                                                    <% } %>
+
+                                                        <% if (currentPage < numberOfPages) { %>
+                                                            <li class="page-item"><a class="page-link"
+                                                                    href="/search?page=<%= numberOfPages %>">Last</a>
+                                                            </li>
+                                                            <% } %>
+
+                            </ul>
+                        </nav>
+                    </div>
+
+
+                    <!-- PAGINATION ARTICLE: https://evdokimovm.github.io/javascript/nodejs/mongodb/pagination/expressjs/ejs/bootstrap/2017/08/20/create-pagination-with-nodejs-mongodb-express-and-ejs-step-by-step-from-scratch.html-->
+                    <!--- https://medium.com/swlh/master-ejs-template-engine-with-node-js-and-expressjs-979cc22b69be-->
         </div>
 
 </body>
