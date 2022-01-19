@@ -23,7 +23,7 @@ exports.post = async (req,res) => {
             currentPage: page,
             message: message
         });
-        res.redirect(`/search/?search=${req.body.search}`);
+        
     } catch (e) {
         console.log(e);
         console.log({ message: "could not list records" });
